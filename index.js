@@ -22,6 +22,14 @@ app.get('/search/:title', (req, res) => {
         });
 });
 
+app.get('/movie/:imdbID', (req, res) => {
+    scraper
+        .getMovie(req.params.imdbID)
+        .then(movies => {
+            res.json(movies);
+        });
+});
+
 app.listen(port, () => {
     console.log(`Listening on ${port}`);
 });

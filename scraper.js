@@ -1,11 +1,12 @@
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const url = process.env.WEB_URL || 'https://www.imdb.com/find/?ref_=nv_sr_sm&s=tt&q=';
+const searchUrl = 'https://www.imdb.com/find/?ref_=nv_sr_sm&s=tt&q=';
+const movieUrl = 'https://www.imdb.com/title/';
 
 const searchMovies = (searchTerm) => {
     
-    return fetch(`${url}${searchTerm}`)
+    return fetch(`${searchUrl}${searchTerm}`)
         .then(response => response.text())
         .then(body => {
             const movies = [];
@@ -15,20 +16,40 @@ const searchMovies = (searchTerm) => {
                 const $element = $(element);
                 const $image = $element.find('div div img');
                 const $title = $element.find('div div a');
-                // const $year = $element.find('div div ul li label:first');
+                const imdbID = $title.attr('href').match(/title\/(.*)\//)[1];
     
                 const movie = {
                     image: $image.attr('src'),
-                    title: $title.text()
+                    title: $title.text(),
+                    imdbID
                 };
     
                 movies.push(movie);
             });
 
             return movies;
-        });
+        })
+    ;
+}
+
+const getMovie = (imdbID) => {
+    
+    return fetch(`${movieUrl}${imdbID}`)
+        .then(response => response.text())
+        .then(body => {
+            const $ = cheerio.load(body);
+            const $title = $.find('h1');
+            const $rating = $.find('span.ipc-rating-star');;
+
+            return {
+                title: $title.text().trim(),
+                rating: $rating.text()
+            };
+        })
+    ;
 }
 
 module.exports = {
-    searchMovies
+    searchMovies,
+    getMovie
 }
