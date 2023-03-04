@@ -2,13 +2,13 @@
  A simple node application that scrape a website and extract title and other infromation within that site.
 
 # todos
-[/] Create a scraper file
-    [/] Use node-fetch to create a http or ajax request
-    [/] Use cheerio to a manipulate html markup
-[/] Create a express js app
-    [/] Import scraper.searchMovies
-    [/] Display all movies
-    [] Display movie information
+- [x] Create a scraper file
+- [x] Use node-fetch to create a http or ajax request
+- [x] Use cheerio to a manipulate html markup
+- [x] Create a express js app
+- [x] Import scraper.searchMovies
+- [x] Display all movies
+- [ ] Display movie information
 
 # node
 npm init -y
