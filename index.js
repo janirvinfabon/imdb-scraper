@@ -1,11 +1,8 @@
 const express = require('express');
-// var cors = require('cors');
 const scraper = require('./scraper');
 
 const app = express();
 const port = process.env.PORT || 3000;
-
-// app.use(cors());
 
 app.get('/', (req, res) => {
     res.json({
@@ -25,8 +22,8 @@ app.get('/search/:title', (req, res) => {
 app.get('/movie/:imdbID', (req, res) => {
     scraper
         .getMovie(req.params.imdbID)
-        .then(movies => {
-            res.json(movies);
+        .then(movie => {
+            res.json(movie);
         });
 });
 

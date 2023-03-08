@@ -20,7 +20,6 @@
   "homepage": "https://github.com/janirvinfabon/imdb-scraper#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "cors": "^2.8.5",
     "express": "^4.18.2",
     "node-fetch": "^2.6.9",
     "nodemon": "^1.19.4"
