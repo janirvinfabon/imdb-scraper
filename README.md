@@ -10,6 +10,43 @@
 - [x] Display all movies
 - [ ] Display movie information
 
+# endpoints
+## GET {IP}:3000/search/:title
+```
+[
+    {
+        "image": "https://images.url/image1.jpg",
+        "title": "Star Wars: The Bad Batch",
+        "imdbID": "tt12708542"
+    },
+    {
+        "image": "https://images.url/image1.jpg",
+        "title": "Star Wars",
+        "imdbID": "tt0076759"
+    }
+]
+```
+
+## GET {IP}:3000/movie/:imdbID
+```
+{
+    "title": "Star Wars: The Bad Batch",
+    "rating": "8.48",
+    "casts": [
+        {
+            "name": "Actor Name 1",
+            "characterName": "Character 1",
+            "image": "https://https://images.url/image1.jpg"
+        },
+        {
+            "name": "Actor Name 2",
+            "characterName": "Character 2",
+            "image": "https://https://images.url/image2.jpg"
+        }
+    ]
+}
+```
+
 # node modules
 - npm init -y
 - npm install node-fetch@^2.0.0
